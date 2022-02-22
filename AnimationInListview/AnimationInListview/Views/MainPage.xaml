@@ -42,7 +42,7 @@
 
         <StackLayout Orientation="Horizontal">
             <Button Command="{Binding RotateRandomChildCommand}" Text="Rotate random"/>
-            <Button Command="{Binding FilterCollectionCommand}" Text="Remove and Add 3 Parent" />
+            <Button Command="{Binding FilterCollectionCommand}" Text="Remove and Add 2 Parent" />
         </StackLayout>
      </StackLayout>
 </ContentPage>
