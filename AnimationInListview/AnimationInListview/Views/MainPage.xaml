@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AnimationInListview.Controls"
+             x:Class="AnimationInListview.Views.MainPage"
+             Title="{Binding Title}">
+    <StackLayout>
+
+        <ScrollView>
+            <StackLayout BindableLayout.ItemsSource="{Binding ParentItems}" 
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout >
+                            <Label Text="{Binding SomeLabel}" BackgroundColor="Teal"/>
+                            <ListView ItemsSource="{Binding Childs}" RowHeight="40">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <controls:AnimatedGrid 
+                                                    ColumnDefinitions="*"
+                                                    RowDefinitions="*"
+                                                    Refresh="{Binding AnimationInt}">
+                                                <Label Text="{Binding SomeLabel}"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalTextAlignment="Center"
+                                                        Grid.Row="0" 
+                                                        Grid.Column="0"/>
+                                            </controls:AnimatedGrid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+
+
+
+
+        <StackLayout Orientation="Horizontal">
+            <Button Command="{Binding RotateRandomChildCommand}" Text="Rotate random"/>
+            <Button Command="{Binding FilterCollectionCommand}" Text="Remove and Add 3 Parent" />
+        </StackLayout>
+     </StackLayout>
+</ContentPage>
